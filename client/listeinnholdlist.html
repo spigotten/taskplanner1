@@ -9,12 +9,11 @@
 
 <body>
 
-        <input type="datetime-local" id="inpDeadline" name="inpDeadline" min="1950-06-07T00:00" max="2100-06-14T00:00">
-        <br></br>
+        <h1 id="txtdestination"></h1>
+        <!input type="datetime-local" id="inpDeadline" name="inpDeadline" min="1950-06-07T00:00" max="2100-06-14T00:00">
         <input type="text" id="inpDescr" placeholder="Legg til..">
         <br></br>
         <button id="btnCreate">Lag ny liste</button>
-        <h3 id="txtResult">Result...</h3>
         <hr>
 
 
@@ -25,7 +24,6 @@
     let inpDescr = document.getElementById('inpDescr');
     //let inpDeadline = document.getElementById('inpDeadline');
     let btnCreate = document.getElementById('btnCreate');
-    let txtResult = document.getElementById('txtResult');
     //---------------------
 
     let url = "http://localhost:3000/listeinnhold";
@@ -69,7 +67,7 @@
                 throw(data);
             };
             
-            txtResult.innerHTML = data.msg + " for " + inpDescr.value;
+            //txtResult.innerHTML = data.msg + " for " + inpDescr.value;
             window.location.reload();
         }
         catch (err) {

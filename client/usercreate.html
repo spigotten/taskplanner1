@@ -4,15 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">    
     <title>User Create</title>
+    <link href="taskplanner.css" rel="stylesheet">
 </head>
 
 <body>
-    <input type="text" id="inpEmail" placeholder="E-mail">
-    <input type="password" id="inpPasswrd" placeholder="Password">
-    <br></br>
-    <button id="btnCreate">Lag bruker</button>
-    <a href="userlogin.html"><button>Gå til logg inn</button></a>
-    <h3 id="txtResult">Result...</h3>
+
+    <div class="container">
+        <h2 id="txtResult">Lag ny profil</h2>
+        <label for="uname"><b>Username</b></label>
+        <input type="text" id="inpEmail" placeholder="E-mail" name="uname">
+
+        <label for="psw"><b>Passord</b></label>
+        <input type="password" id="inpPasswrd" placeholder="Password" name="psw">
+
+        <br></br>
+        <button id="btnCreate">Lag bruker</button>
+
+        <a href="userlogin.html"><button>Gå til logg inn</button></a>
+    </div>
+
 </body>
 
 <script>

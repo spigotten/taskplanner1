@@ -4,14 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">    
     <title>User Create</title>
+    <link href="taskplanner.css" rel="stylesheet">
 </head>
 
 <body>
-    <input type="text" id="inpEmail" placeholder="E-mail">
-    <input type="password" id="inpPasswrd" placeholder="Password">
-    <br></br>
-    <button id="btnLogin">Login</button>
-    <h3 id="txtResult">Result...</h3>
+   <div class="container">
+            <h2>Logg inn</h2>
+            <br></br>
+            <label for="uname"><b>Username</b></label>
+            <input type="text" id="inpEmail" placeholder="E-mail" name="uname">
+
+            <label for="psw"><b>Passord</b></label>
+            <input type="password" id="inpPasswrd" placeholder="Passord" name="psw">
+
+            <br></br>
+            <button id="btnLogin">Logg inn</button>
+
+            <a href="usercreate.html">Ikke en bruker enda? klikk meg!</a>
+    
+
+            <h3 id="txtResult"></h3>
+        </div>
+        
 </body>
 
 <script>
@@ -47,7 +61,7 @@
         if (resp.status > 202) {
             throw(data);
         };
-        txtResult.innerHTML = data.email + " is logged in!";
+        txtResult.innerHTML = data.email + " logg in suksess!";
         sessionStorage.setItem("logindata", JSON.stringify(data));
         location.href = "home.html";
     }
