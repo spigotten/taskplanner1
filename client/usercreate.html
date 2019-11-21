@@ -38,7 +38,7 @@
     btnCreate.addEventListener('click', async function(evt) {
 
 
-    let url = "http://localhost:3000/users";
+    let url = "https://taskplanner1.herokuapp.com/users";
 
     let updata = {
         email: inpEmail.value,
@@ -60,7 +60,6 @@
 
     }
     catch (err) {
-        console.log(err);
     }
 });
 

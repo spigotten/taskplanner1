@@ -60,7 +60,6 @@ router.get('/shared', async function (req, res){
         res.status(200).json(result.rows);
     }
     catch(err) {
-        console.log(err);
         res.status(500).json({error: err});
     }
 });
@@ -79,7 +78,6 @@ router.put('/', async function (req, res) {
     }
     catch (err){
         res.status(500).json(err); //send error respons
-        console.log(err);
     }
 });
 
@@ -99,7 +97,6 @@ router.put('/', async function (req, res) {
     }
     catch (err){
         res.status(500).json(err); //send error respons
-        console.log(err);
     }
 });
 

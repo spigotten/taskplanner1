@@ -41,7 +41,7 @@
     btnLogin.addEventListener('click', async function(evt) {
         
 
-    let url = "http://localhost:3000/users/auth";
+    let url = "https://taskplanner1.herokuapp.com/users/auth";
 
     let updata = {
         email: inpEmail.value,
@@ -67,7 +67,6 @@
         location.href = "home.html";
     }
     catch (err) {
-        console.log(err);
     }
     
    
