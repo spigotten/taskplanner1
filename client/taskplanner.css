@@ -1,6 +1,9 @@
 body { 
+  height: 800px;
+    background-image: linear-gradient(120deg, #3498db, #8e44ad);
+    background-repeat: repeat-x;
     border: 3px solid #f1f1f1;
-    font-family: 'Londrina Outline';
+    font-family: 'Arial, Helvetica, sans-serif;';
     
 }
 
@@ -9,28 +12,38 @@ form {border: 3px solid #f1f1f1;}
 .overskrift {
     position: relative;
     text-align: center;
-    color: blue;
+    color: white;
     width: 100%;
-    font-family: 'Londrina Sketch';
+    font-family: 'Arial, Helvetica, sans-serif;';
     font-size: 80px;    
 }
 
 .innholdstekst {
-    font-family: 'Londrina Outline';
+    font-family: 'Arial, Helvetica, sans-serif;';
     font-size: 30px;
     text-align: center;
     letter-spacing: 1px;
+    color: black;
 
 }
 
 .container {
-    padding: 16px;
+  font-family: 'Arial, Helvetica, sans-serif;';
+  width: 360px;
+  background: #f1f1f1;
+  height: 580px;
+  padding: 80px 40px;
+  border-radius: 10px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
 }
 input[type=text], input[type=password] {
     width: 100%;
     text-align: center;
-    font-family: 'Londrina Outline';
     font-size: 20px;
+    color: black;
     letter-spacing: 2px;
     padding: 12px 20px;
     margin: 8px 0;
@@ -40,10 +53,10 @@ input[type=text], input[type=password] {
 }
 
 button {
-    background-color: lightblue;
-    font-family: 'Londrina Shadow';
+    background-color: #7395ae;
+    font-family: 'Arial, Helvetica, sans-serif;';
     font-size: 30px;
-    color: black;
+    color: white;
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
@@ -58,15 +71,29 @@ button {
 
 
   .containerCreate {
-    font-family: 'Londrina Outline';
-    font-size: 30px;
-    text-align: center;
-    letter-spacing: 1px;
+    font-family: 'Arial, Helvetica, sans-serif;';
+    width: 360px;
+    background: #f1f1f1;
+    height: 580px;
+    padding: 80px 40px;
+    border-radius: 10px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
   }
 
   .containerLogin {
-    font-family: 'Londrina Outline';
-    font-size: 30px;
-    text-align: center;
-    letter-spacing: 1px;
+    font-family: 'Arial, Helvetica, sans-serif;';
+    width: 360px;
+    background: #f1f1f1;
+    height: 580px;
+    padding: 80px 40px;
+    border-radius: 10px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
   }
+
+  

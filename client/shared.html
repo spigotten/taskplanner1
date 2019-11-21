@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
+<head>
+    <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">    
-        <title>plannerlist</title>
+        <title>Shared</title>
+        <script src="https://kit.fontawesome.com/9cdc1b2a92.js" crossorigin="anonymous"></script>
         <link href="taskplanner.css" rel="stylesheet">
-    </head>
-    <body>
-        <div id="container"></div>
-    </body>
+</head>
+<body>
+    <div id="container"></div>
+</body>
 
 <script>
 
-    let url = "http://localhost:3000/planner";
+    let url = "http://localhost:3000/planner/shared";
     let container = document.getElementById('container');
 
     listPlanner(); //list planner at startup
@@ -64,24 +65,14 @@ async function listPlanner() {
 
             let shared = false;
                 let shrBtn = document.createElement("button");
-                shrBtn.innerHTML = "Del liste";
+                shrBtn.innerHTML = "Share";
                 shrBtn.addEventListener('click', function (evt) {
-                    if (confirm("Er du sikker på at du vil dele denne listen?")){
+                    if (confirm("Are you sure you want to share this list?")){
                         shared = true;
                         shareList(value.id, value.destination, shared);
                     } else {
                         shared = false;
                         shareList(value.id, value.destination, shared);
-                    }
-                });
-
-            
-            let updateBtn = document.createElement("button");
-                updateBtn.innerHTML = "Change name";
-                updateBtn.addEventListener('click', async function (evt) {
-                    let updateName = prompt("Gi listen ett nytt navn:");
-                    if (updateName != null){
-                        updateList(updateName, value.id, value.shared);                        
                     }
                 });
             
@@ -94,8 +85,7 @@ async function listPlanner() {
             });
 
             div.insertBefore(lstListeiBtn, div.lastElementChild);
-            div.insertBefore(shrBtn, div.lastElementChild);
-            div.insertBefore(updateBtn, div.lastElementChild);
+            
             //div.insertBefore(addListeiBtn, div.lastElementChild);
             div.insertBefore(delBtn, div.lastElementChild);
             container.appendChild(div);        
@@ -142,40 +132,6 @@ let token = logindata.token;
     }
 }
 
-
-async function updateList(newname, listid, shared) {
-
-let logindata = JSON.parse(sessionStorage.getItem("logindata"));
-let token = logindata.token;
-
-let updata =    {
-    destination: newname,
-    id: listid,
-    shared: shared
-}
-
-
-let cfg = {
-    method: "PUT",
-    headers: {
-        "authorization": token,
-        "Content-Type":"application/json"
-    },
-    body: JSON.stringify(updata)
-}  
-console.log(updata);
-try {
-    let resp = await fetch(url, cfg);
-
-    if (resp.status > 200) {
-        throw(resp)
-    };
-    listPlanner();
-}
-catch (err) {
-    console.log(err);
-}
-}
 
 
 async function deletePlanner(id) {

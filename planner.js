@@ -47,27 +47,63 @@ router.post('/', async function (req, res) {
    }
 });
 
-// endpoint - planner DELETE -----------------------
-router.delete('/', async function (req, res){
+// endpoint - shared get -----------------------
+router.get('/shared', async function (req, res){
 
-    let updata = req.body; //the data sent from the client
 
-    let sql = 'DELETE FROM planner WHERE id = $1 RETURNING *';
-    let values = [updata.plannerID];
+    let sql = 'SELECT * FROM planner WHERE shared = true';
+
+
 
     try {
-        let result = await pool.query(sql, values);
-
-        if (result.rows.length > 0){
-            res.status(200).json({msg: "Delete OK"}); // send response
-        }
-        else{
-            throw "Delete failed";
-        }
+        let result = await pool.query(sql);
+        res.status(200).json(result.rows);
     }
     catch(err) {
+        console.log(err);
         res.status(500).json({error: err});
     }
 });
+
+router.put('/', async function (req, res) {
+
+    let updata = req.body;
+
+    let sql = 'UPDATE planner SET destination = $2, shared = $3 WHERE id = $1';
+    let values = [updata.id, updata.destination, updata.shared];
+
+    try {
+        await pool.query(sql, values);
+
+            res.status(200).json({msg: "List updated"}); //send respons
+    }
+    catch (err){
+        res.status(500).json(err); //send error respons
+        console.log(err);
+    }
+});
+
+//endpoint List planner UPDATE------
+
+router.put('/', async function (req, res) {
+
+    let updata = req.body;
+
+    let sql = 'UPDATE planner SET destination = $2, shared = $3 WHERE id = $1';
+    let values = [updata.id, updata.destination, updata.shared];
+
+    try {
+        await pool.query(sql, values);
+
+            res.status(200).json({msg: "liste oppdatert"}); //send respons
+    }
+    catch (err){
+        res.status(500).json(err); //send error respons
+        console.log(err);
+    }
+});
+
+
+
 
 module.exports = router;
