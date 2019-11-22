@@ -54,15 +54,6 @@ async function listPlanner() {
                 deletePlanner(value.id);
             });
 
-            /*
-            let addListeiBtn = document.createElement("button");
-            addListeiBtn.innerHTML = "Legg til elementer";
-            addListeiBtn.addEventListener('click', function (evt) {
-                sessionStorage.setItem("plannerid", value.id);
-                location.href = "listeinnholdcreate.html";
-            });
-            */
-
             let shared = false;
                 let shrBtn = document.createElement("button");
                 shrBtn.innerHTML = "Share";
@@ -85,8 +76,6 @@ async function listPlanner() {
             });
 
             div.insertBefore(lstListeiBtn, div.lastElementChild);
-            
-            //div.insertBefore(addListeiBtn, div.lastElementChild);
             div.insertBefore(delBtn, div.lastElementChild);
             container.appendChild(div);        
         }

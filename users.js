@@ -1,14 +1,24 @@
 const express = require('express');
 const router = express.Router();
-let protect = require('./protectendpoints.js');
 
+let dbURI;
+try {
+    dbURI = require("./classified").env.DATABASE_URL;
+}
+catch(err){
+    console.log("server kjører ikke lokalt")
+}
+
+let protect = require('./protectendpoints.js');
 const pg = require('pg');
-const dbURI = "postgres://xcpzxxwrhtvbba:e519eb17a3dd7c15b14f3c9f790529d1052903b25ca1760a6406274e2ae0808d@ec2-54-246-105-238.eu-west-1.compute.amazonaws.com:5432/d2g1f4b3tnrq7s" + "?ssl=true";
+
+
+
 const connstring = process.env.DATABASE_URL || dbURI;
 const pool = new pg.Pool({ connectionString: connstring });
 
 const bcrypt = require('bcrypt');
-const secret = "codingisshit!"; //for tokens - should be stored as an enviroment variable
+const secret = "codingisfun!"; //for tokens - should be stored as an enviroment variable
 const jwt = require('jsonwebtoken');
 
 //endpoint user POST --------------
@@ -93,6 +103,52 @@ router.delete('/remove', async function (req, res) {
     }
     catch (err) {
         res.status(500).json({ error: err }); //send error response
+    }
+});
+
+// endpoint - brukerkonto get -----------------------
+router.get('/brukerkonto', async function (req, res){
+
+
+    let sql = 'SELECT * FROM users WHERE id = $1';
+
+
+
+    try {
+        let result = await pool.query(sql);
+        res.status(200).json(result.rows);
+    }
+    catch(err) {
+        console.log(err);
+        res.status(500).json({error: err});
+    }
+});
+
+
+// UPDATE PROFILE-----------
+
+router.put('/password', async function (req, res) {
+
+    let updata = req.body;
+    let hash = bcrypt.hashSync(updata.pswhash, 10);    
+
+    let sql = 'UPDATE users SET pswhash = $2 WHERE id = $1 RETURNING *';
+    let values = [protect.logindata.userid, hash];
+    
+
+    try {
+
+        
+
+        let result = await pool.query(sql, values);
+        console.log("uuuuuu", result.rows);
+
+        res.status(200).json({msg: "Passord oppdatert"}); //send respons
+           
+    }
+    catch (err){
+        res.status(500).json(err); //send error respons
+        console.log(err);
     }
 });
 

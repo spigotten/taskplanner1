@@ -11,7 +11,7 @@
     <body> 
       
         <div class="containerCreate">
-            <h1>Lag ny profil</h1>
+            <h1 id="txtResult">Lag ny profil </h1>
             <label for="uname"><b>Brukernavn</b></label>
             <input type="text" id="inpEmail" placeholder="E-mail" name="uname">
     
@@ -56,11 +56,15 @@
         var resp = await fetch(url, cfg);
         var data = await resp.json();
         txtResult.innerHTML = data.msg;
-      
+
+      //window.location.reload( )
 
     }
     catch (err) {
         console.log(err);
+
+        
+        
     }
 });
 

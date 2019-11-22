@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+        <title>plannerlist</title>
+        <link href="taskplanner.css" rel="stylesheet">
+    </head>
+    <body>
+        <div id="container"></div>
+        <button id="btnDelete">Delete User</button>
+        <br>
+        <a href="home.html"><button>Tilbake</button></a>
+
+        <h1 id="txtResult">Lag ny profil </h1>
+            <label for="uname"><b>Brukernavn</b></label>
+            <input type="text" id="inpEmail" placeholder="E-mail" name="uname">
+    
+            <label for="psw"><b>Passord</b></label>
+            <input type="password" id="inpPasswrd" placeholder="Password" name="psw">
+    
+            <br></br>
+            <button id="uptPassword">oppdater</button>
+    </body>
+
+<script>
+
+
+    let url = "http://localhost:3000/users/password";
+    let container = document.getElementById('container');
+
+    inpEmail.value = JSON.parse(sessionStorage.getItem("logindata")).email;
+
+
+let btnDelete = document.getElementById("btnDelete");
+                btnDelete.addEventListener("click", function() {
+                deleteUsers()
+                });
+let uptPassword = document.getElementById("uptPassword");
+                uptPassword.addEventListener("click", function(){
+                    updateUser();
+                });
+
+
+
+async function updateUser() {
+
+    let logindata = JSON.parse(sessionStorage.getItem("logindata"));
+    let token = logindata.token;
+
+
+    let updata = {
+        pswhash: inpPasswrd.value
+    }
+
+    let cfg = {
+        method: "PUT",
+        headers: {
+            "authorization": token,
+            "Content-Type":"application/json"
+            },
+            body: JSON.stringify(updata)
+        }
+
+ console.log(updata);
+
+    try {
+        var resp = await fetch(url, cfg);
+        var data = await resp.json();
+        txtResult.innerHtml = data.msg;
+       
+        if (resp.status > 202) {
+        throw(data);
+    };
+
+}
+
+    catch (err) {
+        console.log(err);
+    }
+ 
+}
+
+
+
+
+//DELETE USER ----------
+
+
+async function deleteUsers() {
+
+let url = "http://localhost:3000/users/remove";
+
+let logindata = JSON.parse(sessionStorage.getItem("logindata"));
+let token = logindata.token;
+
+let cfg = {
+    method: "DELETE",
+    headers: {
+        "authorization": token,
+        "Content-Type": "application/json"
+    }
+}
+
+try {
+    let resp = await fetch(url, cfg);
+    let data = resp.json();
+    
+    if (resp.status > 202) {
+        throw (data);
+    };
+
+    //sessionStorage.clear();
+    
+    location.href = 'logoutsite.html';
+    
+}
+  
+catch (err) {
+    console.log(err);
+}
+}
+
+
+</script>
+
+</html>
+

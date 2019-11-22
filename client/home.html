@@ -21,8 +21,8 @@
     <a href="plannerlist.html"><button>Mine lister</button></a>
 
     <button id="btnLogout">Logout</button>
-    <button id="btnDelete">Delete User</button>
     <button id="shareList">Se delte lister</button>
+    <button id="profileBtn">Min profil</button>
     
 </body>
 
@@ -34,52 +34,16 @@
         location.href = 'index.html';
     });
 
-    let btnDelete = document.getElementById("btnDelete");
-    btnDelete.addEventListener("click", function() {
-        deleteUsers()
-    });
-
     let shareList = document.getElementById("shareList");
     shareList.addEventListener("click", function() {
         location.href = 'shared.html';
     });
-        
 
-//---------------
+    let profileBtn = document.getElementById("profileBtn");
+    profileBtn.addEventListener("click", function() {
+        location.href = 'brukerkonto.html';
+    });
     
-async function deleteUsers() {
-
-let url = "http://localhost:3000/users/remove";
-
-let logindata = JSON.parse(sessionStorage.getItem("logindata"));
-let token = logindata.token;
-
-let cfg = {
-    method: "DELETE",
-    headers: {
-        "authorization": token,
-        "Content-Type": "application/json"
-    }
-}
-
-try {
-    let resp = await fetch(url, cfg);
-    let data = resp.json();
-    
-    if (resp.status > 202) {
-        throw (data);
-    };
-
-    //sessionStorage.clear();
-    
-    location.href = 'logoutsite.html';
-    
-}
-  
-catch (err) {
-    console.log(err);
-}
-}
 
         </script>
 

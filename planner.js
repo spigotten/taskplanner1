@@ -2,8 +2,17 @@ const express = require('express');
 const router = express.Router();
 let protect = require('./protectendpoints.js');
 
+let dbURI;
+try {
+    dbURI = require("./classified").env.DATABASE_URL;
+}
+catch(err){
+    console.log("server kjører ikke lokalt")
+}
+
 const pg = require('pg');
-const dbURI = "postgres://xcpzxxwrhtvbba:e519eb17a3dd7c15b14f3c9f790529d1052903b25ca1760a6406274e2ae0808d@ec2-54-246-105-238.eu-west-1.compute.amazonaws.com:5432/d2g1f4b3tnrq7s" + "?ssl=true";
+
+
 const connstring = process.env.DATABASE_URL || dbURI;
 const pool = new pg.Pool({ connectionString: connstring });
 
@@ -100,6 +109,29 @@ router.put('/', async function (req, res) {
     catch (err){
         res.status(500).json(err); //send error respons
         console.log(err);
+    }
+});
+
+//endpoint listeinnhold DELETE--------------
+router.delete('/', async function (req, res) {
+
+    let updata = req.body; //the data sent from the client
+
+    let sql = 'DELETE FROM planner WHERE id = $1 RETURNING *';
+    let values = [updata.plannerID];
+
+    try {
+        let result = await pool.query(sql, values);
+
+        if (result.rows.length > 0) {
+            res.status(200).json({ msg: "Delete OK" }); //send response
+        }
+        else {
+            throw "Delete failed";
+        }
+    }
+    catch (err) {
+        res.status(500).json({ error: err }); //send error response
     }
 });
 

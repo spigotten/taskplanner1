@@ -11,7 +11,7 @@
     <body>
     
         <div class="containerLogin"> 
-            <h1> Logg inn </h1>       
+            <h1 id="txtResult"> Logg inn </h1>       
                 <label for="uname"><b>Username</b></label>
                 <input type="text" id="inpEmail" placeholder="E-mail" name="uname">
     
@@ -58,6 +58,7 @@
     try {
         var resp = await fetch(url, cfg);
         var data = await resp.json();
+        txtResult.innerHTML = data.msg;
         
         if (resp.status > 202) {
             throw(data);

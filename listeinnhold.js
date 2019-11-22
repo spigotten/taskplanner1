@@ -1,9 +1,17 @@
 const express = require('express');
 const router = express.Router();
-let protect = require('./protectendpoints.js');
 
+let dbURI;
+try {
+    dbURI = require("./classified").env.DATABASE_URL;
+}
+catch(err){
+    console.log("server kjører ikke lokalt")
+}
+
+let protect = require('./protectendpoints.js');
 const pg = require('pg');
-const dbURI = "postgres://xcpzxxwrhtvbba:e519eb17a3dd7c15b14f3c9f790529d1052903b25ca1760a6406274e2ae0808d@ec2-54-246-105-238.eu-west-1.compute.amazonaws.com:5432/d2g1f4b3tnrq7s" + "?ssl=true";
+
 const connstring = process.env.DATABASE_URL || dbURI;
 const pool = new pg.Pool({ connectionString: connstring });
 
