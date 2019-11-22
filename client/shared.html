@@ -51,7 +51,7 @@ async function listPlanner() {
         for (let value of data){
             let date = new Date(value.date).toDateString();
             let html = `
-                <h3>${value.destination}</h3>
+                <h3>${value.name}</h3>
                 <p>${date}</p>
                 <hr>
             `;

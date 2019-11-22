@@ -11,7 +11,7 @@
     <body>
         <div class="container">
             <h1>Lag ny liste</h1>
-            <input type="text" id="inpDest" placeholder="Tittel på liste" required>
+            <input type="text" id="inpName" placeholder="Tittel på liste" required>
             <input type="date" id="inpDate">
             <br></br>
             <button id="btnCreate">Lag liste</button>
@@ -20,7 +20,7 @@
 
 <script>
 
-    let inpDest = document.getElementById('inpDest');
+    let inpName = document.getElementById('inpName');
     let inpDate = document.getElementById('inpDate');
     let btnCreate = document.getElementById('btnCreate');
 
@@ -32,7 +32,7 @@
     let token = logindata.token;
 
     let updata = {
-        dest: inpDest.value,
+        name: inpName.value,
         date: inpDate.value,
         userid: logindata.userid
         

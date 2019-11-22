@@ -37,8 +37,8 @@ router.post('/', async function (req, res) {
     
     let updata = req.body; //the data sent from the client
 
-    let sql = 'INSERT INTO planner (id, destination, date, userid) VALUES(DEFAULT, $1, $2, $3) RETURNING *';
-    let values = [updata.dest, updata.date, updata.userid];
+    let sql = 'INSERT INTO planner (id, name, date, userid) VALUES(DEFAULT, $1, $2, $3) RETURNING *';
+    let values = [updata.name, updata.date, updata.userid];
 
     try {
         let result = await pool.query(sql, values);
@@ -77,8 +77,8 @@ router.put('/', async function (req, res) {
 
     let updata = req.body;
 
-    let sql = 'UPDATE planner SET destination = $2, shared = $3 WHERE id = $1';
-    let values = [updata.id, updata.destination, updata.shared];
+    let sql = 'UPDATE planner SET name = $2, shared = $3 WHERE id = $1';
+    let values = [updata.id, updata.name, updata.shared];
 
     try {
         await pool.query(sql, values);
@@ -96,8 +96,8 @@ router.put('/', async function (req, res) {
 
     let updata = req.body;
 
-    let sql = 'UPDATE planner SET destination = $2, shared = $3 WHERE id = $1';
-    let values = [updata.id, updata.destination, updata.shared];
+    let sql = 'UPDATE planner SET name = $2, shared = $3 WHERE id = $1';
+    let values = [updata.id, updata.name, updata.shared];
 
     try {
         await pool.query(sql, values);

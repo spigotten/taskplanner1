@@ -33,56 +33,6 @@
 
     listListeinnhold(); //list listeinnhold at startup
 
-    btnCreate.addEventListener('click', async function(evt) {
-
-
-        let url = "http://localhost:3000/listeinnhold";
-
-        let logindata = JSON.parse(sessionStorage.getItem("logindata"));
-        let token = logindata.token;
-
-        let updata = {
-            descr: inpDescr.value,
-            //deadline: inpDeadline.value,
-            plannerid: plrID
-            
-        }
-
-        let cfg = {
-            method: "POST",
-            headers: {
-                "authorization": token,
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(updata)
-        }
-
-
-        try {
-            var resp = await fetch(url, cfg);
-            var data = await resp.json();
-
-            if (resp.status > 202) {
-                throw(data);
-            };
-
-            container.innerHTML = ""; //delete previous content
-
-        
-            
-            //txtResult.innerHTML = data.msg + " for " + inpDescr.value;
-            window.location.reload();
-        }
-        catch (err) {
-            console.log(err);
-            
-        }
-
-    });
-
-
-
-
 
 // ------------------------
 async function listListeinnhold() {
