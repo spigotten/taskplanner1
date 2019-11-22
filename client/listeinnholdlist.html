@@ -27,7 +27,7 @@
     let btnCreate = document.getElementById('btnCreate');
     //---------------------
 
-    let url = "http://localhost:3000/listeinnhold";
+    let url = "https://taskplanner1.herokuapp.com/listeinnhold";
     let container = document.getElementById('container');
     let txtPlanner = document.getElementById('txtPlanner');
 
@@ -41,7 +41,7 @@
     btnCreate.addEventListener('click', async function(evt) {
 
 
-        let url = "http://localhost:3000/listeinnhold";
+        let url = "https://taskplanner1.herokuapp.com/listeinnhold";
 
         let logindata = JSON.parse(sessionStorage.getItem("logindata"));
         let token = logindata.token;
@@ -75,7 +75,6 @@
             window.location.reload();
         }
         catch (err) {
-            console.log(err);
             
         }
 

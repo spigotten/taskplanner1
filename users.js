@@ -43,7 +43,6 @@ router.post('/', async function (req, res) {
         }
     }
     catch (err) {
-        console.log(err);
         res.status(500).json({ error: err }); //send error response
     }
 });
@@ -86,8 +85,6 @@ router.delete('/remove', async function (req, res) {
 
     let updata = req.body; //the data sent from the client
 
-    console.log(protect.logindata)
-
     let sql = 'DELETE FROM users WHERE id = $1 RETURNING *';
     let values = [protect.logindata.userid];
 
@@ -106,6 +103,7 @@ router.delete('/remove', async function (req, res) {
     }
 });
 
+<<<<<<< HEAD
 // endpoint - brukerkonto get -----------------------
 router.get('/brukerkonto', async function (req, res){
 
@@ -149,6 +147,24 @@ router.put('/password', async function (req, res) {
     catch (err){
         res.status(500).json(err); //send error respons
         console.log(err);
+=======
+// UPDATE
+
+router.put('/', async function (req, res) {
+
+    let updata = req.body;
+
+    let sql = 'UPDATE users SET email = $2, pswhash = $3 WHERE id = $1';
+    let values = [updata.id, updata.email, updata.pswhash];
+
+    try {
+        await pool.query(sql, values);
+
+            res.status(200).json({msg: "profil oppdatert"}); //send respons
+    }
+    catch (err){
+        res.status(500).json(err); //send error respons
+>>>>>>> 487c8f8c53310254d32182fcaa04dc0892ae268b
     }
 });
 

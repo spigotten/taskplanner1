@@ -38,12 +38,38 @@
     shareList.addEventListener("click", function() {
         location.href = 'shared.html';
     });
+<<<<<<< HEAD
+=======
+
+    let profileBtn = document.getElementById("profile");
+    profileBtn.addEventListener("click", function() {
+        location.href = 'brukerkonto.html';
+    });
+        
+
+//---------------
+    
+async function deleteUsers() {
+
+let url = "https://taskplanner1.herokuapp.com/users/remove";
+
+let logindata = JSON.parse(sessionStorage.getItem("logindata"));
+let token = logindata.token;
+>>>>>>> 487c8f8c53310254d32182fcaa04dc0892ae268b
 
     let profileBtn = document.getElementById("profileBtn");
     profileBtn.addEventListener("click", function() {
         location.href = 'brukerkonto.html';
     });
     
+<<<<<<< HEAD
+=======
+}
+  
+catch (err) {
+}
+}
+>>>>>>> 487c8f8c53310254d32182fcaa04dc0892ae268b
 
         </script>
 

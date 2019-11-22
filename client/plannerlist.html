@@ -12,7 +12,7 @@
 
 <script>
 
-    let url = "http://localhost:3000/planner";
+    let url = "https://taskplanner1.herokuapp.com/planner";
     let container = document.getElementById('container');
 
     listPlanner(); //list planner at startup
@@ -96,7 +96,6 @@ async function listPlanner() {
         
     }
     catch (err) {
-        console.log(err);
     }
 }
 
@@ -119,7 +118,6 @@ let token = logindata.token;
         },
         body: JSON.stringify(updata)
     }  
-    console.log(updata);
     try {
         let resp = await fetch(url, cfg);
         var data = await resp.json();
@@ -129,7 +127,6 @@ let token = logindata.token;
         };
     }
     catch (err) {
-        console.log(err);
     }
 }
 
@@ -154,7 +151,6 @@ let cfg = {
     },
     body: JSON.stringify(updata)
 }  
-console.log(updata);
 try {
     let resp = await fetch(url, cfg);
 
@@ -164,7 +160,6 @@ try {
     listPlanner();
 }
 catch (err) {
-    console.log(err);
 }
 }
 
@@ -197,7 +192,10 @@ async function deletePlanner(id) {
     }
       
     catch (err) {
+<<<<<<< HEAD
         console.log(data);
+=======
+>>>>>>> 487c8f8c53310254d32182fcaa04dc0892ae268b
     }
 }
 
