@@ -26,7 +26,7 @@
 
     btnCreate.addEventListener('click', async function(evt) {
 
-    let url = "https://taskplanner1.herokuapp.com/planner";
+    let url = "http://localhost:3000/planner";
 
     let logindata = JSON.parse(sessionStorage.getItem("logindata"));
     let token = logindata.token;
@@ -60,6 +60,7 @@
 
     }
     catch (err) {
+        console.log(err);
     }
 });
 

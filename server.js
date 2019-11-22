@@ -31,4 +31,5 @@ app.use('/users', users);
 // start server------------------------
 var port = process.env.PORT || 3000;
 app.listen(port, function () {
+    console.log("server running 3000");
 });

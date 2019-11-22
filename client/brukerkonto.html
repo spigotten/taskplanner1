@@ -8,7 +8,6 @@
     </head>
     <body>
         <div id="container"></div>
-<<<<<<< HEAD
         <button id="btnDelete">Delete User</button>
         <br>
         <a href="home.html"><button>Tilbake</button></a>
@@ -22,13 +21,10 @@
     
             <br></br>
             <button id="uptPassword">oppdater</button>
-=======
->>>>>>> 487c8f8c53310254d32182fcaa04dc0892ae268b
     </body>
 
 <script>
 
-<<<<<<< HEAD
 
     let url = "http://localhost:3000/users/password";
     let container = document.getElementById('container');
@@ -94,96 +90,10 @@ async function updateUser() {
 async function deleteUsers() {
 
 let url = "http://localhost:3000/users/remove";
-=======
-    let url = "https://taskplanner1.herokuapp.com/brukerkonto";
-    let container = document.getElementById('container');
-
-    listPlanner(); //list planner at startup
-// ------------------------
-async function listPlanner() {
-
-    try {
-        let logindata = JSON.parse(sessionStorage.getItem("logindata"));
-        let token = logindata.token;
-
-        let cfg = {
-            method: "GET",
-            headers: {"authorization": token}
-        };
-
-        var resp = await fetch(url, cfg);
-        var data = await resp.json();
-
-        if (resp.status > 202) {
-            throw(data);
-        };
-
-        container.innerHTML = ""; //delete previous content
-
-        for (let value of data){
-            let date = new Date(value.date).toDateString();
-            let html = `
-                <h3>${value.email}</h3>
-                <h3>${value.pswhash}</h3>
-                <hr>
-            `;
-            let div = document.createElement("div");
-            div.innerHTML = html;
-
-            /*
-            let addListeiBtn = document.createElement("button");
-            addListeiBtn.innerHTML = "Legg til elementer";
-            addListeiBtn.addEventListener('click', function (evt) {
-                sessionStorage.setItem("plannerid", value.id);
-                location.href = "listeinnholdcreate.html";
-            });
-           
-
-            let shared = false;
-                let shrBtn = document.createElement("button");
-                shrBtn.innerHTML = "Del liste";
-                shrBtn.addEventListener('click', function (evt) {
-                    if (confirm("Er du sikker på at du vil dele denne listen?")){
-                        shared = true;
-                        shareList(value.id, value.destination, shared);
-                    } else {
-                        shared = false;
-                        shareList(value.id, value.destination, shared);
-                    }
-                });
-            */
-            
-            let updateBtn = document.createElement("button");
-                updateBtn.innerHTML = "Change name";
-                updateBtn.addEventListener('click', async function (evt) {
-                    let updateName = prompt("Gi listen ett nytt navn:");
-                    if (updateName != null){
-                        updateList(updateName, value.id, value.shared);                        
-                    }
-                });
-            
-
-        
-            div.insertBefore(updateBtn, div.lastElementChild);
-            container.appendChild(div);        
-        }
-
-        
-        
-    }
-    catch (err) {
-        
-    }
-}
-
-
-async function updateList(password, newemail, listid,) {
->>>>>>> 487c8f8c53310254d32182fcaa04dc0892ae268b
 
 let logindata = JSON.parse(sessionStorage.getItem("logindata"));
 let token = logindata.token;
 
-<<<<<<< HEAD
 let cfg = {
     method: "DELETE",
     headers: {
@@ -212,36 +122,6 @@ catch (err) {
 }
 
 
-=======
-let updata =    {
-    pswhash: password,
-    email: newemail,
-    id: listid,
-}
-
-
-let cfg = {
-    method: "PUT",
-    headers: {
-        "authorization": token,
-        "Content-Type":"application/json"
-    },
-    body: JSON.stringify(updata)
-}  
-
-try {
-    let resp = await fetch(url, cfg);
-
-    if (resp.status > 200) {
-        throw(resp)
-    };
-    listPlanner();
-}
-catch (err) {
-}
-}
-
->>>>>>> 487c8f8c53310254d32182fcaa04dc0892ae268b
 </script>
 
 </html>

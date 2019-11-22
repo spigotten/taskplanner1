@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">    
         <title>Shared</title>
-        <script src="https://kit.fontawesome.com/9cdc1b2a92.js" crossorigin="anonymous"></script>
-        <link href="taskplanner.css" rel="stylesheet">
+        <!script src="https://kit.fontawesome.com/9cdc1b2a92.js" crossorigin="anonymous"></script>
+        <!link href="taskplanner.css" rel="stylesheet">
 </head>
 <body>
     <div id="container"></div>
@@ -13,7 +13,7 @@
 
 <script>
 
-    let url = "https://taskplanner1.herokuapp.com/planner/shared";
+    let url = "http://localhost:3000/planner/shared";
     let container = document.getElementById('container');
 
     listPlanner(); //list planner at startup
@@ -48,35 +48,17 @@ async function listPlanner() {
             let div = document.createElement("div");
             div.innerHTML = html;
 
-            let delBtn = document.createElement("button");
-            delBtn.innerHTML = "Slett list";
-            delBtn.addEventListener('click', function ( evt){
-                deletePlanner(value.id);
-            });
 
-            let shared = false;
-                let shrBtn = document.createElement("button");
-                shrBtn.innerHTML = "Share";
-                shrBtn.addEventListener('click', function (evt) {
-                    if (confirm("Are you sure you want to share this list?")){
-                        shared = true;
-                        shareList(value.id, value.destination, shared);
-                    } else {
-                        shared = false;
-                        shareList(value.id, value.destination, shared);
-                    }
-                });
             
 
             let lstListeiBtn = document.createElement("button");
-            lstListeiBtn.innerHTML = "Se/endre liste";
+            lstListeiBtn.innerHTML = "Se innhold";
             lstListeiBtn.addEventListener('click', function (evt) {
                 sessionStorage.setItem("plannerid", value.id);
-                location.href = "listeinnholdlist.html";
+                location.href = "sharedcontent.html";
             });
 
             div.insertBefore(lstListeiBtn, div.lastElementChild);
-            div.insertBefore(delBtn, div.lastElementChild);
             container.appendChild(div);        
         }
 
@@ -84,72 +66,11 @@ async function listPlanner() {
         
     }
     catch (err) {
-    }
-}
-
-async function shareList(id, plannerlist, shared) {
-
-let logindata = JSON.parse(sessionStorage.getItem("logindata"));
-let token = logindata.token;
-
-    let updata =    {
-        id: id,
-        destination: plannerlist,
-        shared: shared
-    }
-
-    let cfg = {
-        method: "PUT",
-        headers: {
-            "authorization": token,
-            "Content-Type":"application/json"
-        },
-        body: JSON.stringify(updata)
-    }  
-    try {
-        let resp = await fetch(url, cfg);
-        var data = await resp.json();
-
-        if (resp.status > 200) {
-            throw(resp)
-        };
-    }
-    catch (err) {
+        console.log(err);
     }
 }
 
 
-
-async function deletePlanner(id) {
-
-
-     let updata = { plannerID: id };
-    
-    let logindata = JSON.parse(sessionStorage.getItem("logindata"));
-    let token = logindata.token;
-    
-    let cfg = {
-        method: "DELETE",
-        headers: {
-            "authorization": token,
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(updata)
-    }
-
-    try {
-        let resp = await fetch(url, cfg);
-
-        if (resp.status > 202) {
-            throw(data);
-        };
-        
-        listPlanner();
-    }
-      
-    catch (err) {
-    }
-}
 
 </script>
 
