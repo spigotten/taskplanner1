@@ -40,7 +40,7 @@ async function listPlanner() {
         for (let value of data){
             let date = new Date(value.date).toDateString();
             let html = `
-                <h3>${value.destination}</h3>
+                <h3>${value.name}</h3>
                 <p>${date}</p>
                 <hr>
             `;
@@ -59,10 +59,10 @@ async function listPlanner() {
                 shrBtn.addEventListener('click', function (evt) {
                     if (confirm("Er du sikker på at du vil dele denne listen?")){
                         shared = true;
-                        shareList(value.id, value.destination, shared);
+                        shareList(value.id, value.name, shared);
                     } else {
                         shared = false;
-                        shareList(value.id, value.destination, shared);
+                        shareList(value.id, value.name, shared);
                     }
                 });
 
@@ -81,7 +81,7 @@ async function listPlanner() {
             lstListeiBtn.innerHTML = "Se/endre liste";
             lstListeiBtn.addEventListener('click', function (evt) {
                 sessionStorage.setItem("plannerid", value.id);
-                sessionStorage.setItem("plannerName", value.destination );
+                sessionStorage.setItem("plannerName", value.name );
                 location.href = "listeinnholdlist.html";
             });
 
@@ -107,7 +107,7 @@ let token = logindata.token;
 
     let updata =    {
         id: id,
-        destination: plannerlist,
+        name: plannerlist,
         shared: shared
     }
 
@@ -140,7 +140,7 @@ let logindata = JSON.parse(sessionStorage.getItem("logindata"));
 let token = logindata.token;
 
 let updata =    {
-    destination: newname,
+    name: newname,
     id: listid,
     shared: shared
 }
