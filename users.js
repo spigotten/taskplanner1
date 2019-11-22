@@ -140,8 +140,11 @@ router.put('/password', async function (req, res) {
         let result = await pool.query(sql, values);
         console.log("uuuuuu", result.rows);
 
-        res.status(200).json({msg: "Passord oppdatert"}); //send respons
-           
+        if (result.rows.length > 0) {
+            res.status(200).json({msg: "Passord oppdatert"}); //send respons
+        } else {
+            throw "insert failed";
+        }        
     }
     catch (err){
         res.status(500).json(err); //send error respons

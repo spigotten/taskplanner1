@@ -8,40 +8,61 @@
     </head>
     <body>
         <div id="container"></div>
-        <button id="btnDelete">Delete User</button>
+
+        <button id="btnLogout">Logg ut</button>
+
+        <button id="btnDelete">Slett bruker</button>
         <br>
         <a href="home.html"><button>Tilbake</button></a>
 
-        <h1 id="txtResult">Lag ny profil </h1>
+        <h1 id="txtResult">Lag ny profil.. </h1>
             <label for="uname"><b>Brukernavn</b></label>
-            <input type="text" id="inpEmail" placeholder="E-mail" name="uname">
+            <input type="text" id="inpEmail" placeholder="Burkernavn" name="uname">
     
             <label for="psw"><b>Passord</b></label>
             <input type="password" id="inpPasswrd" placeholder="Password" name="psw">
     
             <br></br>
-            <button id="uptPassword">oppdater</button>
+            <button id="uptPassword">Oppdater</button>
     </body>
 
 <script>
 
+        let txtResult = document.getElementById('txtResult');
 
-    let url = "http://localhost:3000/users/password";
-    let container = document.getElementById('container');
+        let url = "http://localhost:3000/users/password";
+        let container = document.getElementById('container');
 
-    inpEmail.value = JSON.parse(sessionStorage.getItem("logindata")).email;
+        inpEmail.value = JSON.parse(sessionStorage.getItem("logindata")).email;
+
+        let btnLogout = document.getElementById("btnLogout");
+        btnLogout.addEventListener("click", function() {
+            sessionStorage.clear();
+            location.href = 'index.html';
+    });
 
 
-let btnDelete = document.getElementById("btnDelete");
+        let btnDelete = document.getElementById("btnDelete");
                 btnDelete.addEventListener("click", function() {
-                deleteUsers()
+                    if (confirm("Er du sikker på at du vil slette denne kontoen?")){
+                        btnDelete = true;
+                        deleteUsers();
+                    } else {
+                        btnDelete = null;
+                        //deletePlanner(value.id);
+                    }
                 });
-let uptPassword = document.getElementById("uptPassword");
+
+
+
+        let uptPassword = document.getElementById("uptPassword");
                 uptPassword.addEventListener("click", function(){
                     updateUser();
                 });
 
+        
 
+//// UPDATE PASSWORD
 
 async function updateUser() {
 
@@ -109,8 +130,6 @@ try {
     if (resp.status > 202) {
         throw (data);
     };
-
-    //sessionStorage.clear();
     
     location.href = 'logoutsite.html';
     

@@ -4,10 +4,20 @@
     <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">    
         <title>Shared</title>
-        <!script src="https://kit.fontawesome.com/9cdc1b2a92.js" crossorigin="anonymous"></script>
-        <!link href="taskplanner.css" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/9cdc1b2a92.js" crossorigin="anonymous"></script>
+        <link href="taskplanner.css" rel="stylesheet">
 </head>
 <body>
+
+        <div class="dropdown">
+                <button class="dropbtn">Meny</button>
+                <div class="dropdown-content">
+                    <a id="btnLogout">logg ut</a>
+                  <a href="home.html">Hjem</a>
+                </div>
+              </div>
+        
+
     <div id="container"></div>
 </body>
 
@@ -49,7 +59,11 @@ async function listPlanner() {
             div.innerHTML = html;
 
 
-            
+            let btnLogout = document.getElementById("btnLogout");
+            btnLogout.addEventListener("click", function() {
+                sessionStorage.clear();
+                location.href = 'index.html';
+            });
 
             let lstListeiBtn = document.createElement("button");
             lstListeiBtn.innerHTML = "Se innhold";

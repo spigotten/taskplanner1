@@ -7,7 +7,18 @@
         <link href="taskplanner.css" rel="stylesheet">
     </head>
     <body>
-        <div id="container"></div>
+        
+
+        <div class="dropdown">
+            <button class="dropbtn">Meny</button>
+            <div class="dropdown-content">
+              <a id="btnLogout">Logg ut</a>
+              <a href="home.html">Hjem</a>
+            </div>
+          </div>
+
+    <div id="container"></div>
+
     </body>
 
 <script>
@@ -16,6 +27,7 @@
     let container = document.getElementById('container');
 
     listPlanner(); //list planner at startup
+
 // ------------------------
 async function listPlanner() {
 
@@ -50,12 +62,18 @@ async function listPlanner() {
             let delBtn = document.createElement("button");
             delBtn.innerHTML = "Slett list";
             delBtn.addEventListener('click', function ( evt){
-                deletePlanner(value.id);
-            });
+                    if (confirm("Er du sikker på at du vil slette denne listen?")){
+                        delBtn = true;
+                        deletePlanner(value.id);
+                    } else {
+                        delBtn = null;
+                        //deletePlanner(value.id);
+                    }
+                });
 
             let shared = false;
                 let shrBtn = document.createElement("button");
-                shrBtn.innerHTML = "Del liste";
+                shrBtn.innerHTML = "Del din liste";
                 shrBtn.addEventListener('click', function (evt) {
                     if (confirm("Er du sikker på at du vil dele denne listen?")){
                         shared = true;
@@ -68,7 +86,7 @@ async function listPlanner() {
 
             
             let updateBtn = document.createElement("button");
-                updateBtn.innerHTML = "Change name";
+                updateBtn.innerHTML = "Endre navn";
                 updateBtn.addEventListener('click', async function (evt) {
                     let updateName = prompt("Gi listen ett nytt navn:");
                     if (updateName != null){
@@ -78,7 +96,7 @@ async function listPlanner() {
             
 
             let lstListeiBtn = document.createElement("button");
-            lstListeiBtn.innerHTML = "Se/endre liste";
+            lstListeiBtn.innerHTML = "Legg til innhold";
             lstListeiBtn.addEventListener('click', function (evt) {
                 sessionStorage.setItem("plannerid", value.id);
                 sessionStorage.setItem("plannerName", value.destination );

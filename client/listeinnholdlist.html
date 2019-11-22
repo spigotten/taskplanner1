@@ -10,7 +10,11 @@
 
 <body>
 
+
+    
+
         <h1 id="listeNavn">  </h1>
+        <button id="btnBack">Tilbake</button>
         <!input type="datetime-local" id="inpDeadline" name="inpDeadline" min="1950-06-07T00:00" max="2100-06-14T00:00">
         <input type="text" id="inpDescr" placeholder="Legg til..">
         <br></br>
@@ -22,8 +26,14 @@
 </body>
 
 <script>
+
+    let btnBack = document.getElementById("btnBack");
+        btnBack.addEventListener("click", function() {
+            location.href = 'plannerlist.html';
+        });
+
+
     let inpDescr = document.getElementById('inpDescr');
-    //let inpDeadline = document.getElementById('inpDeadline');
     let btnCreate = document.getElementById('btnCreate');
     //---------------------
 
