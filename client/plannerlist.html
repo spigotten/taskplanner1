@@ -4,24 +4,31 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">    
         <title>plannerlist</title>
-        <link href="taskplanner.css" rel="stylesheet">
+        <link href="plannerlist.css" rel="stylesheet">
     </head>
     <body>
         
-
-        <div class="dropdown">
-            <button class="dropbtn">Meny</button>
-            <div class="dropdown-content">
-              <a id="btnLogout">Logg ut</a>
-              <a href="home.html">Hjem</a>
-            </div>
-          </div>
-
-    <div id="container"></div>
-
+            <div class="dropdown">
+                    <button class="dropbtn">Meny</button>
+                    <div class="dropdown-content">
+                      <a id="btnLogout">Logg ut</a>
+                      <a href="home.html">Hjem</a>
+                    </div>
+                  </div>
+        
+                  <div class="containerList">
+                    <h1>Mine lister</h1>
+                <div id="container"></div>
+                </div>
     </body>
 
 <script>
+
+    let btnLogout = document.getElementById("btnLogout");
+        btnLogout.addEventListener("click", function() {
+        sessionStorage.clear();
+        location.href = 'index.html';
+    });
 
     let url = "http://localhost:3000/planner";
     let container = document.getElementById('container');

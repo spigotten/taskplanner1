@@ -1,19 +1,11 @@
 body { 
-  height: 800px;
-    background-image: linear-gradient(120deg, #3498db, #8e44ad);
-    background-repeat: repeat-x;
-    border: 3px solid #f1f1f1;
     font-family: 'Arial, Helvetica, sans-serif;';
-    
 }
 
 form {border: 3px solid #f1f1f1;}
 
-
-
-
 .dropbtn {
-  background-color: rgb(76, 175, 170);
+  background-color: #7395ae;
   color: white;
   padding: 16px;
   font-size: 16px;
@@ -45,9 +37,7 @@ form {border: 3px solid #f1f1f1;}
 
 .dropdown:hover .dropdown-content {display: block;}
 
-.dropdown:hover .dropbtn {background-color: #3e468e;}
-
-
+.dropdown:hover .dropbtn {background-color: #7395ae;}
 
 .overskrift {
     position: relative;
@@ -98,11 +88,25 @@ button {
     font-size: 30px;
     color: white;
     padding: 14px 20px;
-    margin: 8px 0;
+    margin: 1px;
     border: none;
     cursor: pointer;
     width: 100%;
     border-radius: 4px;
+  }
+
+  .redbutton {
+    background-color:rgb(167, 25, 25);
+    font-family: 'Arial, Helvetica, sans-serif;';
+    font-size: 30px;
+    color: white;
+    padding: 14px 20px;
+    margin: 1px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 4px;
+    text-align: center
   }
 
   button:hover {
@@ -135,5 +139,117 @@ button {
     top: 50%;
     transform: translate(-50%,-50%);
   }
-
   
+  .container1 {
+    font-family: 'Arial, Helvetica, sans-serif;';
+    width: 360px;
+    background: #f1f1f1;
+    height: 580px;
+    padding: 80px 40px;
+    border-radius: 10px;
+    position: absolute;
+    left: 30%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+  }
+
+  .container2 {
+    font-family: 'Arial, Helvetica, sans-serif;';
+    width: 360px;
+    background: #f1f1f1;
+    height: 580px;
+    padding: 80px 40px;
+    border-radius: 10px;
+    position: absolute;
+    left: 70%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+ 
+.container3 {
+  font-family: 'Arial, Helvetica, sans-serif;';
+  width: 600px;
+  background: #f1f1f1;
+  height: 580px;
+  padding: 80px 40px;
+  border-radius: 10px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);  
+}
+
+
+/* ---------Style HOME.html-------- */
+
+
+.header {
+  font-family: 'Arial, Helvetica, sans-serif;';
+  font-size: 40px;
+  padding: 20px;
+  text-align: center;
+}
+
+.header2 {
+  text-align: center;
+  font-family: 'Arial, Helvetica, sans-serif;';
+  font-size: 24px;
+  
+
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.column {
+ 
+  width: 300px;
+  float: left;
+  width: 50%;
+  padding: 50px;
+}
+
+.row:after {
+  display: table;
+  clear: both;
+}
+
+@media screen and (max-width:600px) {
+  .column {
+    width: 100%;
+  }
+}
+
+/* ---------Style LISTEINNHOLDLIST.html (container 1 og 2)-------- */
+
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.column1 {
+ 
+  float: left;
+  width: 50%;
+  padding: 50px;
+}
+
+.row:after {
+  display: table;
+  clear: both;
+}
+
+@media screen and (max-width:600px) {
+  .column1 {
+    width: 100%;
+  }
+}

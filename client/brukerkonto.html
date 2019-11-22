@@ -7,23 +7,25 @@
         <link href="taskplanner.css" rel="stylesheet">
     </head>
     <body>
-        <div id="container"></div>
-
-        <button id="btnLogout">Logg ut</button>
-
-        <button id="btnDelete">Slett bruker</button>
-        <br>
-        <a href="home.html"><button>Tilbake</button></a>
-
-        <h1 id="txtResult">Lag ny profil.. </h1>
-            <label for="uname"><b>Brukernavn</b></label>
-            <input type="text" id="inpEmail" placeholder="Burkernavn" name="uname">
-    
-            <label for="psw"><b>Passord</b></label>
-            <input type="password" id="inpPasswrd" placeholder="Password" name="psw">
-    
-            <br></br>
-            <button id="uptPassword">Oppdater</button>
+            <div class="container">
+                    <div id="container"></div>
+                        <h1 id="txtResult"> </h1>
+                        <label for="uname"><b>Brukernavn</b></label>
+                        <input type="text" id="inpEmail" placeholder="Burkernavn" name="uname">
+            
+                        <label for="psw"><b>Passord</b></label>
+                        <input type="password" id="inpPasswrd" placeholder="Password" name="psw">
+            
+                        <br></br>
+                        <button id="uptPassword">Oppdater</button>
+                        <button id="btnLogout">Logg ut</button>
+                        <a href="home.html"><button>Tilbake</button></a>
+                        <br>
+                        <div class="redbutton">
+                        <redbutton id="btnDelete">Slett bruker</redbutton>
+                        </div>
+            
+                    </div>
     </body>
 
 <script>
@@ -83,7 +85,7 @@ async function updateUser() {
             body: JSON.stringify(updata)
         }
 
- console.log(updata);
+        alert(JSON.stringify(updata));
 
     try {
         var resp = await fetch(url, cfg);

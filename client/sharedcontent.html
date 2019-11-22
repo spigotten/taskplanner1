@@ -5,19 +5,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">    
     <title>Listeinnhold List</title>
-    <!link href="taskplanner.css" rel="stylesheet">
+    <link href="plannerlist.css" rel="stylesheet">
 </head>
 
 <body>
 
-        <h1 id="listeNavn"></h1>
-        <hr>
-<div id="container"></div>
+        <div class="dropdown">
+                <button class="dropbtn">Meny</button>
+                <div class="dropdown-content">
+                  <a id="btnLogout">Logg ut</a>
+                  <a href="shared.html">Tilbake til <br> delte lister</a>
+                </div>
+              </div>
 
+        <div class="containerList">
+                <h1 id="listeNavn"></h1>
+                <h3 id="container"></h3>
+        
+                <hr>
+            </div>
     
 </body>
 
 <script>
+
+    let btnLogout = document.getElementById("btnLogout");
+        btnLogout.addEventListener("click", function() {
+        sessionStorage.clear();
+        location.href = 'index.html';
+    });
+
     let inpDescr = document.getElementById('inpDescr');
     let btnCreate = document.getElementById('btnCreate');
     //---------------------
