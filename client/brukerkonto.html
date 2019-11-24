@@ -14,15 +14,15 @@
                         <input type="text" id="inpEmail" placeholder="Burkernavn" name="uname">
             
                         <label for="psw"><b>Passord</b></label>
-                        <input type="password" id="inpPasswrd" placeholder="Password" name="psw">
+                        <input type="password" id="inpPasswrd" placeholder="Nytt Passord" name="psw">
             
                         <br></br>
                         <button id="uptPassword">Oppdater</button>
                         <button id="btnLogout">Logg ut</button>
-                        <a href="home.html"><button>Tilbake</button></a>
+                            <a href="home.html"><button>Tilbake</button></a>
                         <br>
-                        <div class="redbutton">
-                        <redbutton id="btnDelete">Slett bruker</redbutton>
+                            <div class="redbutton">
+                                <redbutton id="btnDelete">Slett bruker</redbutton>
                         </div>
             
                     </div>
@@ -32,16 +32,16 @@
 
         let txtResult = document.getElementById('txtResult');
 
-        let url = "http://localhost:3000/users/password";
+        let url = "https://taskplanner1.herokuapp.com/users/password";
         let container = document.getElementById('container');
 
         inpEmail.value = JSON.parse(sessionStorage.getItem("logindata")).email;
 
         let btnLogout = document.getElementById("btnLogout");
-        btnLogout.addEventListener("click", function() {
-            sessionStorage.clear();
-            location.href = 'index.html';
-    });
+            btnLogout.addEventListener("click", function() {
+                sessionStorage.clear();
+                location.href = 'index.html';
+        });
 
 
         let btnDelete = document.getElementById("btnDelete");
@@ -55,14 +55,10 @@
                     }
                 });
 
-
-
         let uptPassword = document.getElementById("uptPassword");
                 uptPassword.addEventListener("click", function(){
                     updateUser();
                 });
-
-        
 
 //// UPDATE PASSWORD
 
@@ -99,12 +95,9 @@ async function updateUser() {
 }
 
     catch (err) {
-        console.log(err);
     }
  
 }
-
-
 
 
 //DELETE USER ----------
@@ -112,7 +105,7 @@ async function updateUser() {
 
 async function deleteUsers() {
 
-let url = "http://localhost:3000/users/remove";
+let url = "https://taskplanner1.herokuapp.com/users/remove";
 
 let logindata = JSON.parse(sessionStorage.getItem("logindata"));
 let token = logindata.token;
@@ -122,7 +115,7 @@ let cfg = {
     headers: {
         "authorization": token,
         "Content-Type": "application/json"
-    }
+    }   
 }
 
 try {
@@ -138,8 +131,7 @@ try {
 }
   
 catch (err) {
-    console.log(err);
-}
+    }
 }
 
 

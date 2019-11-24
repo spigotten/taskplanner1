@@ -37,21 +37,19 @@
 
     let inpDescr = document.getElementById('inpDescr');
     let btnCreate = document.getElementById('btnCreate');
-    //---------------------
 
-    let url = "http://localhost:3000/listeinnhold";
+
+    let url = "https://taskplanner1.herokuapp.com/listeinnhold";
     let container = document.getElementById('container');
     let txtPlanner = document.getElementById('txtPlanner');
 
     let plrID = sessionStorage.getItem("plannerid");
     let listName = sessionStorage.getItem("plannerName");
     document.getElementById("listeNavn").innerHTML = listName;
-    console.log(listName)
 
     listListeinnhold(); //list listeinnhold at startup
 
 
-// ------------------------
 async function listListeinnhold() {
 
     try {
@@ -81,17 +79,11 @@ async function listListeinnhold() {
             let div = document.createElement("div");
             div.innerHTML = html;
 
-            let delBtn = document.createElement("button");
-            delBtn.innerHTML = "slett...";
-            delBtn.addEventListener('click', function (evt) {
-                deleteListeinnhold(value.id);
-            });
 
             container.appendChild(div);
         }
     }
     catch (err) {
-        console.log(err);
     }
 }
 

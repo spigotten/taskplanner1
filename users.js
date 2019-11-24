@@ -6,7 +6,6 @@ try {
     dbURI = require("./classified").env.DATABASE_URL;
 }
 catch(err){
-    console.log("server kjører ikke lokalt")
 }
 
 let protect = require('./protectendpoints.js');
@@ -116,7 +115,6 @@ router.get('/brukerkonto', async function (req, res){
         res.status(200).json(result.rows);
     }
     catch(err) {
-        console.log(err);
         res.status(500).json({error: err});
     }
 });
@@ -138,7 +136,6 @@ router.put('/password', async function (req, res) {
         
 
         let result = await pool.query(sql, values);
-        console.log("uuuuuu", result.rows);
 
         if (result.rows.length > 0) {
             res.status(200).json({msg: "Passord oppdatert"}); //send respons
@@ -148,7 +145,6 @@ router.put('/password', async function (req, res) {
     }
     catch (err){
         res.status(500).json(err); //send error respons
-        console.log(err);
     }
 });
 

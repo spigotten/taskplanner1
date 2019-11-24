@@ -24,11 +24,12 @@
 
 <script>
 
-    let url = "http://localhost:3000/planner/shared";
+    let url = "https://taskplanner1.herokuapp.com/planner/shared";
     let container = document.getElementById('container');
 
     listPlanner(); //list planner at startup
-// ------------------------
+
+
 async function listPlanner() {
 
     try {
@@ -81,7 +82,6 @@ async function listPlanner() {
         
     }
     catch (err) {
-        console.log(err);
     }
 }
 

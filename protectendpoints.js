@@ -1,5 +1,4 @@
 const jwt = require('jsonwebtoken');
-
 const secret = "codingisfun!"; //for tokens - should be stored as an enviroment variable
 
 let protect =  {};

@@ -12,8 +12,8 @@
     
             <div class="containerLogin"> 
                     <h1 id="txtResult"> Logg inn </h1>       
-                        <label for="uname"><b>Username</b></label>
-                        <input type="text" id="inpEmail" placeholder="E-mail" name="uname">
+                        <label for="uname"><b>Brukernavn</b></label>
+                        <input type="text" id="inpEmail" placeholder="Brukernavn" name="uname">
             
                         <label for="psw"><b>Passord</b></label>
                         <input type="password" id="inpPasswrd" placeholder="Passord" name="psw">
@@ -41,7 +41,7 @@
     btnLogin.addEventListener('click', async function(evt) {
         
 
-    let url = "http://localhost:3000/users/auth";
+    let url = "https://taskplanner1.herokuapp.com/users/auth";
 
     let updata = {
         email: inpEmail.value,
@@ -68,7 +68,6 @@
         location.href = "home.html";
     }
     catch (err) {
-        console.log(err);
     }
     
    

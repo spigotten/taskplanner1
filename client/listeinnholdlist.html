@@ -11,10 +11,11 @@
 <body>
 
 
+    <div class="containerHome">
         <div class="row">
         <div class="column1">
             <div class="header2">
-                <h1>Legg til underliste</h1>
+                <h1>Legg til </h1>
             </div>
                 <input type="text" id="inpDescr" placeholder="Legg til..">
                     <button id="btnCreate">Lag ny liste</button>
@@ -27,6 +28,7 @@
                 <h1 id="listeNavn"></h1>
                 <h3 id="container"></h3>
                 </div>
+        </div>
         </div>
             <!input type="datetime-local" id="inpDeadline" name="inpDeadline" min="1950-06-07T00:00" max="2100-06-14T00:00">
                 
@@ -44,23 +46,21 @@
 
     let inpDescr = document.getElementById('inpDescr');
     let btnCreate = document.getElementById('btnCreate');
-    //---------------------
 
-    let url = "http://localhost:3000/listeinnhold";
+    let url = "https://taskplanner1.herokuapp.com/listeinnhold";
     let container = document.getElementById('container');
     let txtPlanner = document.getElementById('txtPlanner');
 
     let plrID = sessionStorage.getItem("plannerid");
     let listName = sessionStorage.getItem("plannerName");
     document.getElementById("listeNavn").innerHTML = listName;
-    console.log(listName)
 
     listListeinnhold(); //list listeinnhold at startup
 
     btnCreate.addEventListener('click', async function(evt) {
 
 
-        let url = "http://localhost:3000/listeinnhold";
+        let url = "https://taskplanner1.herokuapp.com/listeinnhold";
 
         let logindata = JSON.parse(sessionStorage.getItem("logindata"));
         let token = logindata.token;
@@ -94,17 +94,14 @@
             window.location.reload();
         }
         catch (err) {
-            console.log(err);
-            
-        }
-
+            }
     });
 
 
 
 
 
-// ------------------------
+// -------LEGGER TIL ELEMENTER
 async function listListeinnhold() {
 
     try {
@@ -134,8 +131,10 @@ async function listListeinnhold() {
             let div = document.createElement("div");
             div.innerHTML = html;
 
-            let delBtn = document.createElement("button");
-            delBtn.innerHTML = "slett...";
+            
+
+            let delBtn = document.createElement("slettbutton");
+            delBtn.innerHTML = "slett";
             delBtn.addEventListener('click', function (evt) {
                 deleteListeinnhold(value.id);
             });
@@ -145,11 +144,10 @@ async function listListeinnhold() {
         }
     }
     catch (err) {
-        console.log(err);
     }
 }
 
-// -------------------
+// ----------- SLETTER ELEMENTER
 async function deleteListeinnhold(id) {
 
     let updata = { listeinnholdID: id };
@@ -177,7 +175,6 @@ async function deleteListeinnhold(id) {
     }
       
     catch (err) {
-        console.log(err);
     }
 }
 

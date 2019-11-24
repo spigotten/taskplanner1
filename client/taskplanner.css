@@ -1,36 +1,39 @@
 body { 
-    font-family: 'Arial, Helvetica, sans-serif;';
+  font-family: 'Arial, Helvetica, sans-serif;';
+  
 }
 
 form {border: 3px solid #f1f1f1;}
 
 .dropbtn {
-  background-color: #7395ae;
-  color: white;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
+background-color: #7395ae;
+color: white;
+padding: 16px;
+font-size: 16px;
+border: none;
 }
 
 .dropdown {
-  position: relative;
-  display: inline-block;
+position: relative;
+display: inline-block;
 }
 
 .dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f1f1f1;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
+display: none;
+position: absolute;
+background-color: #f1f1f1;
+min-width: 160px;
+box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+z-index: 1;
+border-radius: 15px;
 }
 
 .dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
+color: black;
+padding: 12px 16px;
+text-decoration: none;
+display: block;
+border-radius: 15px;
 }
 
 .dropdown-content a:hover {background-color: #ddd;}
@@ -40,24 +43,103 @@ form {border: 3px solid #f1f1f1;}
 .dropdown:hover .dropbtn {background-color: #7395ae;}
 
 .overskrift {
-    position: relative;
-    text-align: center;
-    color: white;
-    width: 100%;
-    font-family: 'Arial, Helvetica, sans-serif;';
-    font-size: 80px;    
+  position: relative;
+  text-align: center;
+  color: white;
+  width: 100%;
+  font-family: 'Arial, Helvetica, sans-serif;';
+  font-size: 80px;    
 }
 
 .innholdstekst {
-    font-family: 'Arial, Helvetica, sans-serif;';
-    font-size: 30px;
-    text-align: center;
-    letter-spacing: 1px;
-    color: black;
+  font-family: 'Arial, Helvetica, sans-serif;';
+  font-size: 30px;
+  text-align: center;
+  letter-spacing: 1px;
+  color: black;
 
 }
 
+input {
+  border-radius: 14px;
+}
+
 .container {
+font-family: 'Arial, Helvetica, sans-serif;';
+width: 360px;
+background: #f1f1f1;
+height: 580px;
+padding: 80px 40px;
+border-radius: 10px;
+position: absolute;
+left: 50%;
+top: 50%;
+transform: translate(-50%,-50%);
+}
+input[type=text], input[type=password] {
+  width: 100%;
+  text-align: center;
+  font-size: 20px;
+  color: black;
+  letter-spacing: 2px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box; 
+}
+
+
+
+slettbutton {
+  background-color: #386e94;
+  font-family: 'Arial, Helvetica, sans-serif;';
+  font-size: 14px;
+  color: white;
+  padding: 5px 10px;
+  margin: 1px;
+  cursor: pointer;
+  border-radius: 15px;
+}
+
+slettbutton:hover {
+  opacity: 0.8;
+}
+
+
+button {
+  background-color: #386e94;
+  font-family: 'Arial, Helvetica, sans-serif;';
+  font-size: 30px;
+  color: white;
+  padding: 8px 20px;
+  margin: 1px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 15px;
+}
+
+.redbutton {
+  background-color:rgb(167, 25, 25);
+  font-family: 'Arial, Helvetica, sans-serif;';
+  font-size: 30px;
+  color: white;
+  padding: 14px 20px;
+  margin: 1px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 4px;
+  text-align: center
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+
+.containerCreate {
   font-family: 'Arial, Helvetica, sans-serif;';
   width: 360px;
   background: #f1f1f1;
@@ -69,106 +151,10 @@ form {border: 3px solid #f1f1f1;}
   top: 50%;
   transform: translate(-50%,-50%);
 }
-input[type=text], input[type=password] {
-    width: 100%;
-    text-align: center;
-    font-size: 20px;
-    color: black;
-    letter-spacing: 2px;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box; 
-}
 
-button {
-    background-color: #7395ae;
-    font-family: 'Arial, Helvetica, sans-serif;';
-    font-size: 30px;
-    color: white;
-    padding: 14px 20px;
-    margin: 1px;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    border-radius: 4px;
-  }
-
-  .redbutton {
-    background-color:rgb(167, 25, 25);
-    font-family: 'Arial, Helvetica, sans-serif;';
-    font-size: 30px;
-    color: white;
-    padding: 14px 20px;
-    margin: 1px;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    border-radius: 4px;
-    text-align: center
-  }
-
-  button:hover {
-    opacity: 0.8;
-  }
-
-
-  .containerCreate {
-    font-family: 'Arial, Helvetica, sans-serif;';
-    width: 360px;
-    background: #f1f1f1;
-    height: 580px;
-    padding: 80px 40px;
-    border-radius: 10px;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%,-50%);
-  }
-
-  .containerLogin {
-    font-family: 'Arial, Helvetica, sans-serif;';
-    width: 360px;
-    background: #f1f1f1;
-    height: 580px;
-    padding: 80px 40px;
-    border-radius: 10px;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%,-50%);
-  }
-  
-  .container1 {
-    font-family: 'Arial, Helvetica, sans-serif;';
-    width: 360px;
-    background: #f1f1f1;
-    height: 580px;
-    padding: 80px 40px;
-    border-radius: 10px;
-    position: absolute;
-    left: 30%;
-    top: 50%;
-    transform: translate(-50%,-50%);
-  }
-
-  .container2 {
-    font-family: 'Arial, Helvetica, sans-serif;';
-    width: 360px;
-    background: #f1f1f1;
-    height: 580px;
-    padding: 80px 40px;
-    border-radius: 10px;
-    position: absolute;
-    left: 70%;
-    top: 50%;
-    transform: translate(-50%,-50%);
-}
- 
-.container3 {
+.containerLogin {
   font-family: 'Arial, Helvetica, sans-serif;';
-  width: 600px;
+  width: 360px;
   background: #f1f1f1;
   height: 580px;
   padding: 80px 40px;
@@ -176,80 +162,138 @@ button {
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%,-50%);  
+  transform: translate(-50%,-50%);
 }
 
+.container1 {
+  font-family: 'Arial, Helvetica, sans-serif;';
+  width: 360px;
+  background: #f1f1f1;
+  height: 580px;
+  padding: 80px 40px;
+  border-radius: 10px;
+  position: absolute;
+  left: 30%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.container2 {
+  font-family: 'Arial, Helvetica, sans-serif;';
+  width: 360px;
+  background: #f1f1f1;
+  height: 580px;
+  padding: 80px 40px;
+  border-radius: 10px;
+  position: absolute;
+  left: 70%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.container3 {
+font-family: 'Arial, Helvetica, sans-serif;';
+width: 600px;
+background: #f1f1f1;
+height: 580px;
+padding: 80px 40px;
+border-radius: 10px;
+position: absolute;
+left: 50%;
+top: 50%;
+transform: translate(-50%,-50%);  
+}
 
 /* ---------Style HOME.html-------- */
 
 
+
+.containerHome {
+overflow: auto;
+text-align: center;
+font-family: 'Arial, Helvetica, sans-serif;';
+width: 95%;
+background: #f1f1f1;
+height: 610px;
+padding: 0px 40px;
+border-radius: 10px;
+position: absolute;
+left: 50%;
+top: 50%;
+transform: translate(-50%,-50%);
+}
+
+
+
+
+
 .header {
-  font-family: 'Arial, Helvetica, sans-serif;';
-  font-size: 40px;
-  padding: 20px;
-  text-align: center;
+font-family: 'Arial, Helvetica, sans-serif;';
+font-size: 25px;
+padding: 20px;
+text-align: center;
 }
 
 .header2 {
-  text-align: center;
-  font-family: 'Arial, Helvetica, sans-serif;';
-  font-size: 24px;
-  
+text-align: center;
+font-family: 'Arial, Helvetica, sans-serif;';
+font-size: 20px;
+
 
 }
 
 * {
-  box-sizing: border-box;
+box-sizing: border-box;
 }
 
 body {
-  margin: 0;
+margin: 0;
 }
 
 .column {
- 
-  width: 300px;
-  float: left;
-  width: 50%;
-  padding: 50px;
+
+width: 300px;
+float: left;
+width: 50%;
+padding: 50px;
 }
 
 .row:after {
-  display: table;
-  clear: both;
+display: table;
+clear: both;
 }
 
 @media screen and (max-width:600px) {
-  .column {
-    width: 100%;
-  }
+.column {
+  width: 100%;
+}
 }
 
 /* ---------Style LISTEINNHOLDLIST.html (container 1 og 2)-------- */
 
 
 * {
-  box-sizing: border-box;
+box-sizing: border-box;
 }
 
 body {
-  margin: 0;
+margin: 0;
 }
 
 .column1 {
- 
-  float: left;
-  width: 50%;
-  padding: 50px;
+
+float: left;
+width: 50%;
+padding: 50px;
 }
 
 .row:after {
-  display: table;
-  clear: both;
+display: table;
+clear: both;
 }
 
 @media screen and (max-width:600px) {
-  .column1 {
-    width: 100%;
-  }
+.column1 {
+  width: 100%;
+}
 }

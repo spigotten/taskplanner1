@@ -1,8 +1,6 @@
 const cors = require('cors'); //when the clients arent on the server
-
 const express = require('express');
 const app = express(); //server-app
-
 
 let protect = require('./protectendpoints.js');
 
@@ -25,11 +23,7 @@ app.use('/users', users);
 //app.use('/brukerkonto', brukerkonto);
 
 
-
-
-
 // start server------------------------
 var port = process.env.PORT || 3000;
 app.listen(port, function () {
-    console.log("server running 3000");
 });

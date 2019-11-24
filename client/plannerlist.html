@@ -13,11 +13,12 @@
                     <div class="dropdown-content">
                       <a id="btnLogout">Logg ut</a>
                       <a href="home.html">Hjem</a>
+                      <a href="plannercreate.html">Lag ny liste</a>
                     </div>
                   </div>
         
                   <div class="containerList">
-                    <h1>Mine lister</h1>
+                    <h1>| Mine lister |</h1>
                 <div id="container"></div>
                 </div>
     </body>
@@ -30,7 +31,7 @@
         location.href = 'index.html';
     });
 
-    let url = "http://localhost:3000/planner";
+    let url = "https://taskplanner1.herokuapp.com/planner";
     let container = document.getElementById('container');
 
     listPlanner(); //list planner at startup
@@ -115,13 +116,9 @@ async function listPlanner() {
             div.insertBefore(updateBtn, div.lastElementChild);
             div.insertBefore(delBtn, div.lastElementChild);
             container.appendChild(div);        
-        }
-
-        
-        
+        }   
     }
     catch (err) {
-        console.log(err);
     }
 }
 
@@ -144,7 +141,6 @@ let token = logindata.token;
         },
         body: JSON.stringify(updata)
     }  
-    console.log(updata);
     try {
         let resp = await fetch(url, cfg);
         var data = await resp.json();
@@ -154,7 +150,6 @@ let token = logindata.token;
         };
     }
     catch (err) {
-        console.log(err);
     }
 }
 
@@ -179,18 +174,16 @@ let cfg = {
     },
     body: JSON.stringify(updata)
 }  
-console.log(updata);
 try {
-    let resp = await fetch(url, cfg);
+        let resp = await fetch(url, cfg);
 
-    if (resp.status > 200) {
-        throw(resp)
-    };
-    listPlanner();
-}
-catch (err) {
-    console.log(err);
-}
+        if (resp.status > 200) {
+            throw(resp)
+        };
+        listPlanner();
+    }
+    catch (err) {
+    }
 }
 
 
@@ -222,7 +215,6 @@ async function deletePlanner(id) {
     }
       
     catch (err) {
-        console.log(data);
     }
 }
 

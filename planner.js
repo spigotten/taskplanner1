@@ -7,7 +7,6 @@ try {
     dbURI = require("./classified").env.DATABASE_URL;
 }
 catch(err){
-    console.log("server kjører ikke lokalt")
 }
 
 const pg = require('pg');
@@ -131,8 +130,5 @@ router.delete('/', async function (req, res) {
         res.status(500).json({ error: err }); //send error response
     }
 });
-
-
-
 
 module.exports = router;

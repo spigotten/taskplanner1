@@ -2,12 +2,11 @@ const express = require('express');
 const router = express.Router();
 
 let dbURI;
-try {
-    dbURI = require("./classified").env.DATABASE_URL;
-}
-catch(err){
-    console.log("server kjører ikke lokalt")
-}
+        try {
+            dbURI = require("./classified").env.DATABASE_URL;
+        }   
+        catch(err){
+        }
 
 let protect = require('./protectendpoints.js');
 const pg = require('pg');

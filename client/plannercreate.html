@@ -9,10 +9,19 @@
     </head>
     
     <body>
+
+            <div class="dropdown">
+                    <button class="dropbtn">Meny</button>
+                        <div class="dropdown-content">
+                            <a id="btnLogout">Logg ut</a>
+                            <a href="home.html">Hjem</a>
+                        </div>
+                  </div>
+
             <div class="container">
                     <h1>Lag ny liste</h1>
-                    <input type="text" id="inpName" placeholder=" eks...Handleliste" required>
-                    <input type="date" id="inpDate">
+                    <input type="text" id="inpName" placeholder=" eks...Handleliste"  required>
+                    <input type="date" id="inpDate" required="true"> *
                     <br></br>
                     <button id="btnCreate">Lag liste</button>
                 </div>
@@ -20,13 +29,19 @@
 
 <script>
 
+    let btnLogout = document.getElementById("btnLogout");
+            btnLogout.addEventListener("click", function() {
+            sessionStorage.clear();
+            location.href = 'index.html';
+            });
+
     let inpName = document.getElementById('inpName');
     let inpDate = document.getElementById('inpDate');
     let btnCreate = document.getElementById('btnCreate');
 
     btnCreate.addEventListener('click', async function(evt) {
 
-    let url = "http://localhost:3000/planner";
+    let url = "https://taskplanner1.herokuapp.com/planner";
 
     let logindata = JSON.parse(sessionStorage.getItem("logindata"));
     let token = logindata.token;
@@ -60,7 +75,6 @@
 
     }
     catch (err) {
-        console.log(err);
     }
 });
 
